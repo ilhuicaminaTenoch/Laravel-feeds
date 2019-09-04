@@ -22,4 +22,11 @@ Route::group(['middleware' => ['auth']],function (){
     Route::get('/main', function () {
         return view('contenido/contenido');
     })->name('main');
+
+    Route::group(['middleware' => ['Administrador']],function (){
+
+    });
 });
+
+//EJEMPLO PARA PETICONES GRAPQHL
+Route::get('post','DataController@postRequest');

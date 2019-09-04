@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->integer('idrol')->unsigned();
             $table->foreign('idrol')->references('id')->on('roles');
 
+            $table->
+
 
             $table->rememberToken();
         });
