@@ -89,6 +89,10 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/gmostafa/php-graphql-client" />
+      <path value="$PROJECT_DIR$/vendor/akamai-open/edgegrid-auth" />
+      <path value="$PROJECT_DIR$/vendor/seld/cli-prompt" />
+      <path value="$PROJECT_DIR$/vendor/league/climate" />
+      <path value="$PROJECT_DIR$/vendor/akamai-open/edgegrid-client" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

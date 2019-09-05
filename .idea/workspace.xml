@@ -2,18 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68d02c08-d5fd-4316-a90d-0fe8275866f0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sgf.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sgf.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DataController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_03_162926_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_09_03_162926_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../feedsTelevisa/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../feedsTelevisa/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../feedsTelevisa/config/autoload/local.php" beforeDir="false" afterPath="$PROJECT_DIR$/../feedsTelevisa/config/autoload/local.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../feedsTelevisa/public/jsonGoogle/datos-la-rosa-de-guadalupe.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../feedsTelevisa/public/jsonGoogle/datos-por-amar-sin-ley.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../feedsTelevisa/public/jsonGoogle/tv-episode-la-rosa-de-guadalupe.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../feedsTelevisa/public/jsonGoogle/tv-episode-por-amar-sin-ley.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -145,6 +148,10 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/gmostafa/php-graphql-client" />
+      <path value="$PROJECT_DIR$/vendor/akamai-open/edgegrid-auth" />
+      <path value="$PROJECT_DIR$/vendor/seld/cli-prompt" />
+      <path value="$PROJECT_DIR$/vendor/league/climate" />
+      <path value="$PROJECT_DIR$/vendor/akamai-open/edgegrid-client" />
     </include_path>
   </component>
   <component name="ProjectId" id="1QNa6LSL1GFiNHfgG5iQGPRTWCE" />
@@ -162,10 +169,11 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ventas-laravel-vuejs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../feedsTelevisa" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -207,7 +215,9 @@
       <workItem from="1567448400924" duration="12821000" />
       <workItem from="1567524103228" duration="12304000" />
       <workItem from="1567613333536" duration="2788000" />
-      <workItem from="1567616137636" duration="9954000" />
+      <workItem from="1567616137636" duration="10894000" />
+      <workItem from="1567696237254" duration="4904000" />
+      <workItem from="1567701969705" duration="16184000" />
     </task>
     <servers />
   </component>

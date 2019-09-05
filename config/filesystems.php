@@ -64,6 +64,34 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'NETSTORAGE1' => [
+            'driver' => 'ftp',
+            'host' => env('HOST_NETSTORAGE1'),
+            'username' => env('FTP_USERNAME'),
+            'password' => env('FTP_PASSWORD'),
+
+            // Optional FTP Settings...
+            // 'port' => 21,
+            // 'root' => '',
+             'passive' => true,
+            // 'ssl' => true,
+            // 'timeout' => 30,
+        ],
+
+        'NETSTORAGE2' => [
+            'driver' => 'ftp',
+            'host' => env('HOST_NETSTORAGE2'),
+            'username' => env('FTP_USERNAME'),
+            'password' => env('FTP_PASSWORD'),
+
+            // Optional FTP Settings...
+            // 'port' => 21,
+            // 'root' => '',
+            'passive' => true,
+            // 'ssl' => true,
+            // 'timeout' => 30,
+        ],
+
     ],
 
 ];

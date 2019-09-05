@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use GraphQL\Client;
-use GraphQL\Exception\QueryError;
-use GraphQL\Query;
-use GraphQL\QueryBuilder\QueryBuilder;
+use App\Utils;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DataController extends Controller
 {
@@ -17,30 +15,28 @@ class DataController extends Controller
      */
     public function postRequest()
     {
-        $client = new Client(
-            'http://localhost:3000/api'
-        );
-        $gql = (new Query('getEnVivo'))
-            ->setSelectionSet(
-                [
-                    'name',
-                    'promoType'
-                ]
-            );
+        $utils = new Utils();
+        $nameLocal = 'enVivo.json';
+        $nameProduccion = '/app_programs/tudn/test/events_all.json';
+        $postFields = "{\"query\":\"{\\n  programs(uid:\\\"0000016b-fccb-d523-a5fb-ffcf50890000\\\",pagina:\\\"/app-feed-home\\\",ui:\\\"tudn\\\"){\\n    id\\n    name\\n    description\\n    pub_date\\n    start_time\\n    end_time\\n    is_live\\n    image_assets{\\n      image_base\\n    }\\n    show_category_external_id\\n    channel_id\\n    channel_name\\n    override_url\\n    stream_state\\n    url_public\\n    type\\n  }\\n}\",\"variables\":null}";
+        $dataProduccionString = $utils->curlGql('http://localhost:3000/api','3000', $postFields);
+        if (!Storage::disk('public')->exists($nameLocal)){
+            Storage::disk('public')->put($nameLocal,'');
+        }
+        $dataLocalString = Storage::disk('public')->get($nameLocal);
+        if (strcmp($dataProduccionString, $dataLocalString) !== 0){
+            //echo"el contenido de produccion NO es igual al contenido de local";
+            $data = json_decode($dataProduccionString,true);
+            $programs = json_encode($data['data'], true);
+            Storage::disk('public')->put($nameLocal,$dataProduccionString);
+            Storage::disk('NETSTORAGE1')->put($nameProduccion, $programs);
+            Storage::disk('NETSTORAGE2')->put($nameProduccion, $programs);
+            $fastPurge = $utils->fastPurgeAkamai('http://static-feeds.esmas.com/awsfeeds'.$nameProduccion);
 
-        try {
-            $results = $client->runQuery($gql, true, [
-                'uid' => '0000016b-fccb-d523-a5fb-ffcf50890000',
-                'pagina' => '/app-feed-home',
-                'ui' => 'tudn'
-            ]);
-            echo"ENTRO AQUI<pre>"; print_r($results); echo"</pre>";
+        }else{
+            //echo"el contenido de produccion es igual al contenido de local";
         }
-        catch (QueryError $exception) {
-            print_r($exception->getErrorDetails());
-            exit;
-        }
-        return ['ok'];
+        return $fastPurge;
     }
 
     /**
