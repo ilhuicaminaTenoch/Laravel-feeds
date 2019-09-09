@@ -46,6 +46,52 @@ class DataController extends Controller
         return $fastPurge;
     }
 
+    public function test(){
+        $client = new Client(
+            'https://graphql-pokemon.now.sh/'
+        );
+        $gql = (new Query('pokemon'))
+            ->setVariables([new Variable('name', 'String', true)])
+            ->setArguments(['name' => '$name'])
+            ->setSelectionSet(
+                [
+                    'id',
+                    'number',
+                    'name',
+                    (new Query('evolutions'))
+                        ->setSelectionSet(
+                            [
+                                'id',
+                                'number',
+                                'name',
+                                (new Query('attacks'))
+                                    ->setSelectionSet(
+                                        [
+                                            (new Query('fast'))
+                                                ->setSelectionSet(
+                                                    [
+                                                        'name',
+                                                        'type',
+                                                        'damage',
+                                                    ]
+                                                )
+                                        ]
+                                    )
+                            ]
+                        )
+                ]
+            );
+        try {
+            $name = readline('Enter pokemon name: ');
+            $results = $client->runQuery($gql, true, ['name' => $name]);
+        }
+        catch (QueryError $exception) {
+            print_r($exception->getErrorDetails());
+            exit;
+        }
+        print_r($results->getData()['pokemon']);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
