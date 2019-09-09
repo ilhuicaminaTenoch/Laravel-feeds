@@ -20,13 +20,14 @@ use Faker\Generator as Faker;
 
 $factory->define(Roles::class, function (Faker $faker) {
     return [
-        'nombre' => $faker->name,
+        'nombre' => $faker->unique(true)->userName(),
         'descripcion' => $faker->text(20),
         'condicion' => '1',
     ];
 });
 
 $factory->define(User::class, function (Faker $faker) {
+
     return [
         'usuario' => $faker->name,
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

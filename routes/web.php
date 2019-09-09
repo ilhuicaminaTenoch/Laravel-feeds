@@ -30,3 +30,6 @@ Route::group(['middleware' => ['auth']],function (){
 
 //EJEMPLO PARA PETICONES GRAPQHL
 Route::get('post','DataController@postRequest');
+
+// Exception routes
+Route::get('exception/index', 'ExceptionController@index');

@@ -53,7 +53,8 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="true" aria-expanded="false">
                     <img src="images/avatar6.png" class="img-avatar" alt="manuel.moreno@televisatim.com">
                     <span class="d-md-down-none">admin </span>
                 </a>

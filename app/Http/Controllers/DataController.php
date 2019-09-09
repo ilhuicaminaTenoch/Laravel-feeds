@@ -22,20 +22,27 @@ class DataController extends Controller
         $dataProduccionString = $utils->curlGql('http://localhost:3000/api','3000', $postFields);
         if (!Storage::disk('public')->exists($nameLocal)){
             Storage::disk('public')->put($nameLocal,'');
-        }
-        $dataLocalString = Storage::disk('public')->get($nameLocal);
-        if (strcmp($dataProduccionString, $dataLocalString) !== 0){
-            //echo"el contenido de produccion NO es igual al contenido de local";
-            $data = json_decode($dataProduccionString,true);
-            $programs = json_encode($data['data'], true);
-            Storage::disk('public')->put($nameLocal,$dataProduccionString);
-            Storage::disk('NETSTORAGE1')->put($nameProduccion, $programs);
-            Storage::disk('NETSTORAGE2')->put($nameProduccion, $programs);
-            $fastPurge = $utils->fastPurgeAkamai('http://static-feeds.esmas.com/awsfeeds'.$nameProduccion);
+
+
+            $dataLocalString = Storage::disk('public')->get($nameLocal);
+            if (strcmp($dataProduccionString, $dataLocalString) !== 0){
+                $data = json_decode($dataProduccionString,true);
+                $programs = json_encode($data['data'], true);
+                Storage::disk('public')->put($nameLocal,$dataProduccionString);
+                Storage::disk('NETSTORAGE1')->put($nameProduccion, $programs);
+                Storage::disk('NETSTORAGE2')->put($nameProduccion, $programs);
+                $fastPurge = $utils->fastPurgeAkamai('http://static-feeds.esmas.com/awsfeeds'.$nameProduccion);
+
+            }else{
+                //echo"el contenido de produccion es igual al contenido de local";
+                throw new \App\Exceptions\CustomException("Aun no hay actualizacion de contenido");
+            }
+
 
         }else{
-            //echo"el contenido de produccion es igual al contenido de local";
+            throw new \App\Exceptions\CustomException("No existe el archivo $nameLocal, en la carpeta local");
         }
+
         return $fastPurge;
     }
 

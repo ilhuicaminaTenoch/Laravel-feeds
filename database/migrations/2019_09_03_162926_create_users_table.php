@@ -20,10 +20,6 @@ class CreateUsersTable extends Migration
             $table->boolean('condicion')->default(1);
             $table->integer('idrol')->unsigned();
             $table->foreign('idrol')->references('id')->on('roles');
-
-            $table->
-
-
             $table->rememberToken();
         });
     }
