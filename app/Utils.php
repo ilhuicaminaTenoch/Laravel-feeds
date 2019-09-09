@@ -37,7 +37,7 @@ class Utils extends Model
         curl_close($curl);
 
         if ($err) {
-            $data = "cURL Error #:" . $err;
+            throw new \App\Exceptions\CustomException("cURL Error GrapqhQL: " . $err);
         } else {
             $data = $response;
         }
@@ -63,9 +63,11 @@ class Utils extends Model
                 'url' => $url
             );
         }catch (RequestException $exception){
-            $result = Psr7\str($exception->getRequest());
+            $error = Psr7\str($exception->getRequest());
+            throw new \App\Exceptions\CustomException($error);
             if ($exception->hasResponse()){
-                $resultado = Psr7\str($exception->getResponse());
+                $error = Psr7\str($exception->getResponse());
+                throw new \App\Exceptions\CustomException($error);
             }
         }
         return $resultado;
