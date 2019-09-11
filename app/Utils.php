@@ -6,6 +6,7 @@ use Akamai\Open\EdgeGrid\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class Utils extends Model
 {
@@ -37,7 +38,9 @@ class Utils extends Model
         curl_close($curl);
 
         if ($err) {
-            throw new \App\Exceptions\CustomException("cURL Error GrapqhQL: " . $err);
+            Log::channel('deportes')->error("cURL Error GraphQL: $err");
+            throw new \App\Exceptions\CustomException("cURL Error GraphQL: " . $err);
+
         } else {
             $data = $response;
         }

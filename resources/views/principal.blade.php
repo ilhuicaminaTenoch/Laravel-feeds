@@ -31,6 +31,15 @@
             <li class="nav-item px-3">
                 <a class="nav-link" href="#">Configuraciones</a>
             </li>
+            <li class="nav-item px-3">
+                <a class="nav-link" href="{{ route('logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesion</a>
+            </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
+                {{ csrf_field() }}
+            </form>
+
+
         </ul>
         <ul class="nav navbar-nav ml-auto">
             <li class="nav-item d-md-down-none">
@@ -55,22 +64,33 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
                    aria-haspopup="true" aria-expanded="false">
-                    <img src="images/avatar6.png" class="img-avatar" alt="manuel.moreno@televisatim.com">
-                    <span class="d-md-down-none">admin </span>
+                    <img src="img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                    <span class="d-md-down-none">{{ Auth::user()->usuario }} </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="dropdown-header text-center">
                         <strong>Cuenta</strong>
                     </div>
-                    <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Perfil</a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Cerrar sesión</a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-lock"></i> Cerrar sesión
+                    </a>
+
+
                 </div>
             </li>
         </ul>
     </header>
     <div class="app-body">
-    @include('plantilla/sidebar')
-
+    @if(Auth::check())
+        @if(Auth::user()->idrol == 1 )
+            @include('plantilla.sidebaradministrator')
+        @elseif(Auth::user()->idrol == 2)
+            @include('plantilla.sidebarvendedor')
+        @elseif(Auth::user()->idrol == 3)
+            @include('plantilla.sidebaralmacenista')
+        @else
+        @endif
+    @endif
     <!-- Contenido Principal -->
     @yield('contenido')
     <!-- /Fin del contenido principal -->

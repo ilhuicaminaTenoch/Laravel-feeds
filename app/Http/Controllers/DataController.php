@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Utils;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class DataController extends Controller
@@ -34,12 +35,13 @@ class DataController extends Controller
                 $fastPurge = $utils->fastPurgeAkamai('http://static-feeds.esmas.com/awsfeeds'.$nameProduccion);
 
             }else{
-                //echo"el contenido de produccion es igual al contenido de local";
+                Log::channel('deportes')->notice("Aun no hay actualizacion de contenido");
                 throw new \App\Exceptions\CustomException("Aun no hay actualizacion de contenido");
             }
 
 
         }else{
+            Log::channel('deportes')->notice("No existe el archivo $nameLocal, en la carpeta local");
             throw new \App\Exceptions\CustomException("No existe el archivo $nameLocal, en la carpeta local");
         }
 

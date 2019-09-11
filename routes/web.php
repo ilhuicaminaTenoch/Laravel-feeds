@@ -19,13 +19,19 @@ Route::group(['middleware' => ['guest']],function (){
 });
 
 Route::group(['middleware' => ['auth']],function (){
+    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
     Route::get('/main', function () {
         return view('contenido/contenido');
     })->name('main');
+    Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('logs');
 
     Route::group(['middleware' => ['Administrador']],function (){
-
+        //Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth');
     });
+
+
+
+
 });
 
 //EJEMPLO PARA PETICONES GRAPQHL
@@ -33,3 +39,7 @@ Route::get('post','DataController@postRequest');
 
 // Exception routes
 Route::get('exception/index', 'ExceptionController@index');
+
+//LOG VIWER
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
