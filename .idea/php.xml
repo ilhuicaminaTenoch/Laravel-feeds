@@ -94,6 +94,8 @@
       <path value="$PROJECT_DIR$/vendor/league/climate" />
       <path value="$PROJECT_DIR$/vendor/akamai-open/edgegrid-client" />
       <path value="$PROJECT_DIR$/vendor/rap2hpoutre/laravel-log-viewer" />
+      <path value="$PROJECT_DIR$/vendor/asm89/stack-cors" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-cors" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

@@ -3,7 +3,9 @@
         <ul class="nav">
             <li @click="menu=0" class="nav-item">
                 <a class="nav-link active" href="#"><i class="icon-speedometer"></i> Escritorio</a>
-                <a class="nav-link" href="{{ route('logs') }}"><i class="icon-speedometer"></i> Log</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo url('logs')?>"><i class="icon-speedometer"></i> Log viewer</a>
             </li>
             <li class="nav-title">
                 Mantenimiento

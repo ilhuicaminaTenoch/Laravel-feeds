@@ -12,30 +12,31 @@
 */
 
 
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('/', 'Auth\LoginController@showLoginForm');
+    Route::match(array('GET', 'POST'), 'login', 'Auth\LoginController@login')->name('login');
 
-Route::group(['middleware' => ['guest']],function (){
-    Route::get('/','Auth\LoginController@showLoginForm');
-    Route::post('login', 'Auth\LoginController@login')->name('login');
+
 });
 
-Route::group(['middleware' => ['auth']],function (){
+Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
     Route::get('/main', function () {
         return view('contenido/contenido');
     })->name('main');
-    Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('logs');
 
-    Route::group(['middleware' => ['Administrador']],function (){
-        //Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth');
+
+    Route::group(['middleware' => ['Administrador']], function () {
+        Route::get('/rol','RolesController@index');
+        Route::get('/rol/select-rol','RolesController@selectRol');
+
     });
-
-
 
 
 });
 
 //EJEMPLO PARA PETICONES GRAPQHL
-Route::get('post','DataController@postRequest');
+Route::get('post', 'DataController@postRequest');
 
 // Exception routes
 Route::get('exception/index', 'ExceptionController@index');
