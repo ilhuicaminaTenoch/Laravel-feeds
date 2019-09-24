@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Roles;
+use App\Rol;
 use Illuminate\Http\Request;
 
-class RolesController extends Controller
+class RolController extends Controller
 {
     public function index (Request $request)
     {
@@ -15,9 +15,9 @@ class RolesController extends Controller
         $criterio = $request->criterio;
 
         if ($buscar == '') {
-            $rol = Roles::orderBy('id', 'desc')->paginate(3);
+            $rol = Rol::orderBy('id', 'desc')->paginate(3);
         } else {
-            $rol = Roles::where($criterio, 'like', '%' . $buscar . '%')->orderBy('id', 'desc')->paginate(3);
+            $rol = Rol::where($criterio, 'like', '%' . $buscar . '%')->orderBy('id', 'desc')->paginate(3);
         }
 
         return [

@@ -11,19 +11,15 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        /*$count = 2;
-        factory(\App\Roles::class,$count)->create();*/
+        //$faker = Faker\Factory::create();
 
-        $faker = Faker\Factory::create();
-        $limit = 2;
+        $items = [
+            ['id' => 1, 'nombre' => 'Administrator', 'descripcion' => 'Administradores de área', 'condicion' => '1'],
+            ['id' => 2, 'nombre' => 'Editor', 'descripcion' => 'Editor de contenido multimedia', 'condicion' => '1'],
+        ];
 
-        for ($i = 0; $i < $limit; $i++) {
-            $nombre = ($i == 0) ? 'Administrador' : 'Editor';
-            \Illuminate\Support\Facades\DB::table('roles')->insert([
-                'nombre' => $nombre,
-                'descripcion' => $faker->realText(15),
-                'condicion' => '1',
-            ]);
+        foreach ($items as $item) {
+            \App\Rol::updateOrCreate(['id' => $item['id']], $item);
         }
 
 

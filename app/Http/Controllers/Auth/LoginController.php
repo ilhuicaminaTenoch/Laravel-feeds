@@ -28,25 +28,24 @@ class LoginController extends Controller
     {
         $this->valideLogin($request);
         $credencials = [
-            'usuario' => "{$request->usuario}",
-            'password' => "{$request->password}",
+            'email' => $request->email,
+            'password' => $request->password,
             'condicion' => 1
         ];
-        //dd($credencials);
 
         if (Auth::attempt($credencials)) {
             return redirect()->route('main');
         }
 
         return back()
-            ->withErrors(['usuario' => trans('auth.failed')])
-            ->withInput(\request(['usuario']));
+            ->withErrors(['email' => trans('auth.failed')])
+            ->withInput(\request(['email']));
     }
 
     protected function valideLogin(Request $request)
     {
         $this->validate($request, [
-            'usuario' => 'required|string',
+            'email' => 'required|string',
             'password' => 'required|string'
         ]);
     }

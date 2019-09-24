@@ -10,10 +10,10 @@
                         <div class="card-body">
                             <h1>Acceder</h1>
                             <p class="text-muted">Control de acceso al sistema</p>
-                            <div class="form-group mb-3{{ $errors->has('usuario' ? 'is-invalid' : '') }}">
+                            <div class="form-group mb-3{{ $errors->has('email' ? 'is-invalid' : '') }}">
                                 <span class="input-group-addon"><i class="icon-user"></i></span>
-                                <input type="text" value="{{ old('usuario') }}" name="usuario" id="usuario" class="form-control" placeholder="Usuario">
-                                {!! $errors->first('usuario', '<span class="invalid-feedback">:message</span>') !!}
+                                <input type="text" value="{{ old('email') }}" name="email" id="email" class="form-control" placeholder="Correo electronico">
+                                {!! $errors->first('email', '<span class="invalid-feedback">:message</span>') !!}
                             </div>
                             <div class="form-group mb-4{{ $errors->has('password' ? 'is-invalid' : '') }}">
                                 <span class="input-group-addon"><i class="icon-lock"></i></span>
@@ -33,7 +33,7 @@
                     <div class="card-body text-center">
                         <div>
                             <h2>Sistema Generador de Feeds</h2>
-                            <p>Sistema para generar feeds. Los cuales cuales alimentan a la APP de <b>Las Estrellas</b> y <b>TUDN</b></p>
+                            <p>Sistema para generar feeds. Los cuales alimentan a la APP de <b>Las Estrellas</b> y <b>TUDN</b></p>
                         </div>
                     </div>
                 </div>

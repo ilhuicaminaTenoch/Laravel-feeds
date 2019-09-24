@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Roles extends Model
+class Rol extends Model
 {
     public $timestamps = false;
-    public $table = 'roles';
-    public $fillable = ['nombre', 'descripcion', 'condicion'];
+    public $table = 'rol';
+    public $fillable = ['nombre', 'email', 'descripcion', 'condicion'];
 
     public function users(){
         return $this->hasMany('App\User');
