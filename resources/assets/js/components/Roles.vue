@@ -16,9 +16,7 @@
                             <div class="input-group">
                                 <select class="form-control col-md-3" v-model="criterio">
                                     <option value="nombre">Nombre</option>
-                                    <option value="email">Correo electronico</option>
-                                    <option value="descripcion">Descripción</option>
-
+                                    <option value="descripcion">Descripcióno</option>
                                 </select>
                                 <input type="text" v-model="buscar" @keyup.enter="listarRol(1, buscar, criterio)" class="form-control" placeholder="Texto a buscar">
                                 <button type="submit" @click="listarRol(1, buscar, criterio)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
@@ -29,7 +27,6 @@
                         <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Correo electronico</th>
                             <th>Descripción</th>
                             <th>Estado</th>
                         </tr>

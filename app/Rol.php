@@ -8,7 +8,7 @@ class Rol extends Model
 {
     public $timestamps = false;
     public $table = 'rol';
-    public $fillable = ['nombre', 'email', 'descripcion', 'condicion'];
+    public $fillable = ['nombre', 'descripcion', 'condicion'];
 
     public function users(){
         return $this->hasMany('App\User');

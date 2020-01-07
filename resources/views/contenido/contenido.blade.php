@@ -13,6 +13,10 @@
             <template v-if="menu==8">
                 <roles></roles>
             </template>
+
+            <template v-if="menu==7">
+                <usuarios></usuarios>
+            </template>
         @endif
     @endif
 
@@ -42,9 +46,7 @@
         <h1>Contenido el menu 6</h1>
     </template>
 
-    <template v-if="menu==7">
-        <h1>Contenido el menu 7</h1>
-    </template>
+    
 
 
 

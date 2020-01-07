@@ -19,7 +19,7 @@
                             <div class="input-group">
                                 <select class="form-control col-md-3" v-model="criterio">
                                     <option value="nombre">Nombre</option>
-                                    <option value="num_documento"># Documento</option>
+                                    <option value="email">Email</option>
                                 </select>
                                 <input type="text" v-model="buscar" @keyup.enter="listarPersona(1, buscar, criterio)" class="form-control" placeholder="Texto a buscar">
                                 <button type="submit" @click="listarPersona(1, buscar, criterio)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
@@ -31,10 +31,6 @@
                         <tr>
                             <th>Opciones</th>
                             <th>Nombre</th>
-                            <th>Documennto</th>
-                            <th>Direccion</th>
-                            <th>Teléfono</th>
-                            <th>Email</th>
                             <th>Usuario</th>
                             <th>Rol</th>
 
@@ -58,12 +54,7 @@
                                 </template>
                             </td>
                             <td v-text="persona.nombre"></td>
-                            <td v-text="persona.tipo_documento"></td>
-                            <td v-text="persona.num_documento"></td>
-                            <td v-text="persona.direccion"></td>
-                            <td v-text="persona.telefono"></td>
                             <td v-text="persona.email"></td>
-                            <td v-text="persona.usuario"></td>
                             <td v-text="persona.rol"></td>
                         </tr>
                         </tbody>
@@ -105,30 +96,6 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 form-control-label" for="email-input">Tipo de documento</label>
-                                <div class="col-md-9">
-                                    <input type="text" v-model="tipo_documento" class="form-control" placeholder="Ingrese tipo de de documento">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 form-control-label" for="email-input"># Documento</label>
-                                <div class="col-md-9">
-                                    <input type="text" v-model="num_documento" class="form-control" placeholder="Ingrese numero de documento">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 form-control-label" for="email-input">Direccion</label>
-                                <div class="col-md-9">
-                                    <input type="text" v-model="direccion" class="form-control" placeholder="Ingrese dirección">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 form-control-label" for="email-input">Teléfono</label>
-                                <div class="col-md-9">
-                                    <input type="text" v-model="telefono" class="form-control" placeholder="Ingrese teléfono">
-                                </div>
-                            </div>
-                            <div class="form-group row">
                                 <label class="col-md-3 form-control-label" for="email-input">Email</label>
                                 <div class="col-md-9">
                                     <input type="text" v-model="email" class="form-control" placeholder="Ingrese email">
@@ -140,9 +107,7 @@
                                 <div class="col-md-9">
                                     <select class="form-control" v-model="idrol">
                                         <option value="0">Seleccione un rol</option>
-                                        <option v-for="rol in arrayRol" :key="rol.id" :value="rol.id" v-text="rol.nombre">
-
-                                        </option>
+                                        <option v-for="rol in arrayRol" :key="rol.id" :value="rol.id" v-text="rol.nombre"></option>
 
                                     </select>
                                 </div>
@@ -190,10 +155,6 @@
             return{
                 persona_id:0,
                 nombre:'',
-                tipo_documento: 'DNI',
-                num_documento: '',
-                direccion: '',
-                telefono: '',
                 email: '',
                 usuario: '',
                 password: '',
@@ -285,10 +246,6 @@
                 let me = this;
                 axios.post('/user/registrar',{
                     'nombre' : this.nombre,
-                    'tipo_documento' : this.tipo_documento,
-                    'num_documento': this.num_documento,
-                    'direccion' : this.direccion,
-                    'telefono' : this.telefono,
                     'email' : this.email,
                     'usuario' : this.usuario,
                     'password':this.password,
@@ -309,15 +266,10 @@
                 console.log('entro');
                 axios.put('/user/actualizar',{
                     'nombre' : this.nombre,
-                    'tipo_documento' : this.tipo_documento,
-                    'num_documento': this.num_documento,
-                    'direccion' : this.direccion,
-                    'telefono' : this.telefono,
                     'email' : this.email,
                     'usuario' : this.usuario,
                     'password':this.password,
-                    'idrol' : this.idrol,
-                    'id': this.persona_id
+                    'idrol' : this.idrol
                 }).then(function (response) {
                     me.cerrarModal();
                     me.listarPersona(1,'','nombre');
@@ -343,10 +295,6 @@
                 this.modal = 0;
                 this.tituloModal = '';
                 this.nombre = '';
-                this.tipo_documento =  'DNI';
-                this.num_documento = '';
-                this.direccion = '';
-                this.telefono = '';
                 this.email = '';
                 this.usuario = '';
                 this.password = '';
@@ -362,10 +310,6 @@
                             {
                                 this.modal = 1;
                                 this.tituloModal = 'Resgistrar Usuario';
-                                this.tipo_documento =  'DNI';
-                                this.num_documento = '';
-                                this.direccion = '';
-                                this.telefono = '';
                                 this.email = '';
                                 this.usuario = '';
                                 this.password = '';
@@ -381,10 +325,6 @@
                                 this.tituloModal = 'Actualizar Proveedor';
                                 this.tipoAccion = 2;
                                 this.nombre = data['nombre'];
-                                this.tipo_documento =  data['tipo_documento'];
-                                this.num_documento = data['num_documento'];
-                                this.direccion = data['direccion'];
-                                this.telefono = data['telefono'];
                                 this.email = data['email'];
                                 this.usuario = data['usuario'];
                                 this.password = data['password'];

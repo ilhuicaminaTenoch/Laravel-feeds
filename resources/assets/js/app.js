@@ -25,6 +25,7 @@ Vue.component('user', require('./components/User.vue'));
 Vue.component('ingreso', require('./components/Ingreso.vue'));*/
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('roles', require('./components/Roles.vue').default);
+Vue.component('usuarios', require('./components/Users.vue').default);
 
 const app = new Vue({
     el: '#app',
