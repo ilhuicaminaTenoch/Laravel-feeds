@@ -153,7 +153,7 @@
     export default {
         data(){
             return{
-                persona_id:0,
+                usuario_id:0,
                 nombre:'',
                 email: '',
                 usuario: '',
@@ -265,6 +265,7 @@
                 let me = this;
                 console.log('entro');
                 axios.put('/user/actualizar',{
+                    'usuario_id': this.usuario_id,
                     'nombre' : this.nombre,
                     'email' : this.email,
                     'usuario' : this.usuario,
@@ -322,14 +323,13 @@
                             {
                                 console.log(data);
                                 this.modal = 1;
-                                this.tituloModal = 'Actualizar Proveedor';
+                                this.tituloModal = 'Actualizar Usuario';
                                 this.tipoAccion = 2;
                                 this.nombre = data['nombre'];
                                 this.email = data['email'];
-                                this.usuario = data['usuario'];
                                 this.password = data['password'];
                                 this.idrol = data['idrol'];
-                                this.persona_id = data['id'];
+                                this.usuario_id = data['id'];
                                 break;
                             }
                         }

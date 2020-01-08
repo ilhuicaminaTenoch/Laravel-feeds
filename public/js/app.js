@@ -2043,7 +2043,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      persona_id: 0,
+      usuario_id: 0,
       nombre: '',
       email: '',
       usuario: '',
@@ -2155,6 +2155,7 @@ __webpack_require__.r(__webpack_exports__);
       var me = this;
       console.log('entro');
       axios.put('/user/actualizar', {
+        'usuario_id': this.usuario_id,
         'nombre': this.nombre,
         'email': this.email,
         'usuario': this.usuario,
@@ -2210,14 +2211,13 @@ __webpack_require__.r(__webpack_exports__);
                 {
                   console.log(data);
                   this.modal = 1;
-                  this.tituloModal = 'Actualizar Proveedor';
+                  this.tituloModal = 'Actualizar Usuario';
                   this.tipoAccion = 2;
                   this.nombre = data['nombre'];
                   this.email = data['email'];
-                  this.usuario = data['usuario'];
                   this.password = data['password'];
                   this.idrol = data['idrol'];
-                  this.persona_id = data['id'];
+                  this.usuario_id = data['id'];
                   break;
                 }
             }

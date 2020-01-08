@@ -19,12 +19,12 @@ class UserController extends Controller
         if ($buscar == ''){
             
             $usuarios = User::join('rol', 'users.idrol', '=', 'rol.id')
-                ->select('users.nombre','users.email','users.password', 'users.condicion', 'users.idrol', 'rol.nombre as rol')
+                ->select('users.id','users.nombre','users.email','users.password', 'users.condicion', 'users.idrol', 'rol.nombre as rol')
                 ->where('users.'.$criterio, 'like', '%'.$buscar.'%')
                 ->orderBy('users.nombre', 'asc')->paginate(3);
         }else{
             $usuarios = User::join('rol', 'users.idrol', '=', 'rol.id')
-                ->select('users.nombre','users.email','users.password', 'users.condicion', 'users.idrol', 'rol.nombre as rol')
+                ->select('users.id','users.nombre','users.email','users.password', 'users.condicion', 'users.idrol', 'rol.nombre as rol')
                 ->where('users.'.$criterio, 'like', '%'.$buscar.'%')
                 ->orderBy('users.nombre', 'asc')->paginate(3);
         }
@@ -50,8 +50,8 @@ class UserController extends Controller
 
             DB::beginTransaction();
             $user = new User();
-            $user->usuario = $request->usuario;
             $user->nombre = $request->nombre;
+            $user->email = $request->email;
             $user->password = bcrypt($request->password);
             $user->condicion = 1;
             $user->idrol = $request->idrol;
@@ -66,24 +66,15 @@ class UserController extends Controller
     public function update(Request $request)
     {
         if (!$request->ajax()) return redirect('/');
-
+        
         try{
             DB::beginTransaction();
 
             //Buscar al proveedor a modificar
-            $user = User::findOrFail($request->id);
-            $persona = Persona::findOrFail($user->id);
+            $user = User::find($request->usuario_id);
 
-
-            $persona->nombre = $request->nombre;
-            $persona->tipo_documento = $request->tipo_documento;
-            $persona->num_documento = $request->num_documento;
-            $persona->direccion = $request->direccion;
-            $persona->telefono = $request->telefono;
-            $persona->email = $request->email;
-            $persona->save();
-
-            $user->usuario = $request->usuario;
+            $user->nombre = $request->nombre;
+            $user->email = $request->email;
             $user->password = bcrypt($request->password);
             $user->condicion = 1;
             $user->idrol = $request->idrol;
